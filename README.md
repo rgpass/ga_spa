@@ -24,3 +24,14 @@ This assignment is similar to what we introduce to students, and it reflects a r
 ##Note on OMDB:
 
 *The OMDB Api is a nice API to use, however some of the images from the movie results are not hotlinkable outside of localhost. Don't worry about this for now.*
+
+##To Do
+
+* Parse several results (s= instead of t=)
+* Incorporate Bootstrap
+* Add alert that the search failed, remove it on success, show on fail
+* Submits on pressing enter as well
+* Set the submit button to animate with loading gif until results returned
+* Paginate results if over 10
+* Bonus: Add masonry.js to put results like Pinterest
+* Bonus: Add trip.js

@@ -1,2 +1,57 @@
-<h1>SinglePages#home</h1>
-<p>Find me in app/views/single_pages/home.html.erb</p>
+<h1>Coolest Movie Search App</h1>
+<h6>This side of the Mississippi</h6>
+
+<div class="row">
+	<div class="col-md-8">
+		<div class="row">
+			<div class="col-md-10">
+				<input id="search" type="text" class="form-control col-lg-8" placeholder="Search">
+			</div>
+			<div class="col-md-2">
+				<button id="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</div>
+
+		<h3 id="the-title">Change me w/the title</h3>
+		<h4>About</h4>
+		<p id="year"></p><!-- May just change this to Released -->
+		<p id="actors"></p>
+		<p id="director"></p>
+		<p id="genre"></p>
+		<p id="plot"></p>
+		<img id="poster" />
+		<p id="rated"></p>
+		<h4>Details</h4>
+		<p id="awards"></p>
+		<p id="country"></p>
+		<p id="language"></p>
+		<p id="runtime"></p>
+		<p id="type"></p>
+		<p id="writer"></p>
+		<p id="imdbID"></p>
+		<h4>Scores</h4>
+		<p id="metascore"></p>
+		<p id="imdbRating"></p> (out of <p id="imdbVotes"></p> votes.)
+	</div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#submit').click(function() {
+		$.get("http://www.omdbapi.com/?s=" + $('#search').val(), function(data) {
+			console.log('Request received');
+		})
+		.done(function(data) {
+			var parsed = JSON.parse(data);
+			if (parsed.Response == "True") {
+				window.parsed = parsed;
+				$('#the-title').text(parsed.Title);
+			} else {
+				alert(parsed.Error);
+			}
+		})
+	})
+
+});
+</script>
