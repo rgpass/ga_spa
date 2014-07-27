@@ -33,8 +33,8 @@ function searchForMovie() {
 
 function loadResults(parsed) {
 	$('#title-year-rating').text(parsed.Title + " (" + parsed.Year + ") [" + parsed.Rated + "]");
-	$('#poster').attr('src', parsed.Poster);
-	$('#imdbID').attr('href', "http://www.imdb.com/title/" + parsed.imdbID);
+	$('.poster').attr('src', parsed.Poster);
+	$('.imdbID').attr('href', "http://www.imdb.com/title/" + parsed.imdbID);
 	$('#plot').text(parsed.Plot);
 	$('#awards').text(parsed.Awards);
 	$('#mc-rating').text(parsed.Metascore);

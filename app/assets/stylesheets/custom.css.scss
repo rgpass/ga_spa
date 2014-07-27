@@ -29,8 +29,16 @@
 
 
 /* Fields */
-#poster {
+.large {
 	max-width: 200px;
+}
+
+.small {
+	max-width: 175px;
+}
+
+.x-small {
+	max-width: 50px;
 }
 
 #metacritic-mini-logo {
@@ -43,6 +51,11 @@
 	max-height:40px;
 	max-width:40px;
 	margin-top:-3px;
+}
+
+a.title-link {
+	color: white;
+	text-decoration: underline;
 }
 
 /* Tables */
