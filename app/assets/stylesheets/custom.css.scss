@@ -19,10 +19,48 @@
   margin: 0px;
 }
 
+.margin-top {
+	margin-top: 20px;
+}
+
 .strong {
 	font-weight: bold;
 }
 
+
+/* Fields */
+#poster {
+	max-width: 200px;
+}
+
+#metacritic-mini-logo {
+	max-height:20px;
+	max-width:20px;
+	margin-top:-2px;
+}
+
+#imdb-mini-logo {
+	max-height:40px;
+	max-width:40px;
+	margin-top:-3px;
+}
+
+/* Tables */
+.table-margin {
+	margin-left:-8px;
+}
+
+.table tbody tr td {
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+tr td:first-child {
+	font-weight: bold;
+}
+
+
+/* Miscellaneous */
 .bar {
 	padding-left: 5px;
 	padding-right: 5px;

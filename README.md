@@ -1,5 +1,11 @@
 #Javascript Single Page App
 
+##Features
+
+* Simple
+* SPA (Single Page App)
+* Incorporated Bootstrap
+
 ##Overview
 
 Use Javascript to create a single page app that searches and displays movie info.
@@ -27,12 +33,8 @@ This assignment is similar to what we introduce to students, and it reflects a r
 
 ##To Do
 
-* Remove style/brs and add to custom css
+* RWD
+* Slim?
+* pushState -- i.e. can send /?q=top%20gun and it would show results for Top Gun
 * Parse several results (s= instead of t=)
-* Incorporate Bootstrap
-* Add alert that the search failed, remove it on success, show on fail
-* Submits on pressing enter as well
-* Set the submit button to animate with loading gif until results returned
-* Paginate results if over 10
-* Bonus: Add masonry.js to put results like Pinterest
 * Bonus: Add trip.js
