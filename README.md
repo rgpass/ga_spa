@@ -27,6 +27,7 @@ This assignment is similar to what we introduce to students, and it reflects a r
 
 ##To Do
 
+* Remove style/brs and add to custom css
 * Parse several results (s= instead of t=)
 * Incorporate Bootstrap
 * Add alert that the search failed, remove it on success, show on fail

@@ -1,57 +1,81 @@
-<h1>Coolest Movie Search App</h1>
-<h6>This side of the Mississippi</h6>
-
 <div class="row">
-	<div class="col-md-8">
-		<div class="row">
-			<div class="col-md-10">
-				<input id="search" type="text" class="form-control col-lg-8" placeholder="Search">
-			</div>
-			<div class="col-md-2">
-				<button id="submit" class="btn btn-primary">Submit</button>
+	<div class="col-xs-12">
+		<div class="jumbotron">
+		  <h1>Movie Search</h1>
+		  <p>The easiest movie search app this side of the Mississippi</p>
+			<div class="row">
+				<div class="col-xs-6">
+					<input id="search-box" type="text" class="form-control" placeholder="Search">
+				</div>
+				<div class="col-xs-2">
+					<button type="button" class="btn btn-primary" id="search-btn" data-loading-text='Searching <i class="fa fa-spinner fa-spin"></i>'>
+					  Search
+					</button>
+				</div>
 			</div>
 		</div>
+	</div>
+</div>
 
-		<h3 id="the-title">Change me w/the title</h3>
-		<h4>About</h4>
-		<p id="year"></p><!-- May just change this to Released -->
-		<p id="actors"></p>
-		<p id="director"></p>
-		<p id="genre"></p>
-		<p id="plot"></p>
-		<img id="poster" />
-		<p id="rated"></p>
-		<h4>Details</h4>
-		<p id="awards"></p>
-		<p id="country"></p>
-		<p id="language"></p>
-		<p id="runtime"></p>
-		<p id="type"></p>
-		<p id="writer"></p>
-		<p id="imdbID"></p>
-		<h4>Scores</h4>
-		<p id="metascore"></p>
-		<p id="imdbRating"></p> (out of <p id="imdbVotes"></p> votes.)
+<div class="row">
+	<div class="col-xs-12">
+		<h2 id="title-year-rating">Top Gun (1986) [PG]</h2>
+		<div class="row">
+			<div class="col-sm-2">
+				<img id="poster" style="max-width:200px" src="http://ia.media-imdb.com/images/M/MV5BMTY3ODg4OTU3Nl5BMl5BanBnXkFtZTYwMjI1Nzg4._V1_SX300.jpg"/>
+				<p class="text-center small"><a id="imdbID" href="http://www.imdb.com/title/tt0092099/">View on imdb</a></p>
+			</div>
+			<div class="col-sm-8">
+				<div class="panel panel-primary">
+				  <div class="panel-heading">
+				    <h3 class="panel-title strong">About</h3>
+				  </div>
+				  <div class="panel-body">
+						<p id="plot">As students at the Navy's elite fighter weapons school compete to be best in the class, one daring young flyer learns a few things from a civilian instructor that are not taught in the classroom.</p>
+						<p id="genre">Action, Drama, Romance <span class="bar">|</span> 110 min <span class="bar">|</span> English <span class="bar">|</span> USA</p>
+						<div class="row">
+							<div class="col-xs-2">
+								<p class="no-margin strong">Featuring:</p>
+								<p class="no-margin strong">Director(s):</p>
+								<p class="no-margin strong">Writer(s):</p>
+							</div>
+							<div class="col-xs-10">
+								<span id="actors" class="block no-margin">Tom Cruise, Kelly McGillis, Val Kilmer, Anthony Edwards</span>
+								<span id="actors" class="block no-margin">Tony Scott</span>
+								<span id="actors" class="block no-margin">Jim Cash, Jack Epps Jr., Ehud Yonay (magazine article "Top Guns")</span>
+							</div>
+						</div>
+						<br />
+						<p class="strong">Awards: <span id="awards">Won 1 Oscar. Another 9 wins & 5 nominations.</span></p>
+						<img src="http://www.gameinformer.com/cfs-filesystemfile.ashx/__key/CommunityServer-Components-ImageFileViewer/CommunityServer-Components-UserFiles-00-00-58-31-12-Attached+Files/4011.BigLogo_5F00_jpg.png_2D00_610x0.png" style="max-height:25px;max-width:25px"> : N/A <span class="bar">|</span>
+						<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/35/IMDb_logo.svg/300px-IMDb_logo.svg.png" style="max-height:40px;max-width:40px"> : 6.8 out of 173,080 votes
+				  </div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
 
+
 <script type="text/javascript">
 $(document).ready(function() {
-	$('#submit').click(function() {
-		$.get("http://www.omdbapi.com/?s=" + $('#search').val(), function(data) {
-			console.log('Request received');
-		})
-		.done(function(data) {
-			var parsed = JSON.parse(data);
+	$('#search-btn').click(function() {
+		var btn = $(this);
+		btn.button('loading');
+		$.get("http://www.omdbapi.com/?t=" + $('#search-box').val()).done(function(data) {
+			window.parsed = JSON.parse(data);
+	    setTimeout(function() {
+	    	btn.button('reset')
+	    }, 500);
 			if (parsed.Response == "True") {
-				window.parsed = parsed;
-				$('#the-title').text(parsed.Title);
+				$('#title-year-rating').text(parsed.Title + " (" + parsed.Year + ") [" + parsed.Rated + "]");
+				$('#poster').attr('src', parsed.Poster)
+				$('#imdbID').attr('href', "http://www.imdb.com/title/" + parsed.imdbID)
 			} else {
-				alert(parsed.Error);
+				console.log(parsed);
 			}
 		})
 	})
-
 });
 </script>
