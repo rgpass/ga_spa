@@ -8,9 +8,9 @@
 * RWD (Responsive Web Design)
 * Pushed to Heroku (http://gp-ga-spa.herokuapp.com/)
 * Query string parameters (/?q=planet   will return Rise of the Planet of the Apes)
-* Push state (search for "planet" then "top gun" then click back -- will hit server again for "planet")
-* Use slim instead of ERb
-* Use Handlebars.js as templating engine
+* Added HTML5 pushState (search for "planet" then "top gun" then click back -- will hit server again for "planet")
+* Used slim instead of ERb
+* Used Handlebars.js as templating engine
 
 ##Overview
 
@@ -36,10 +36,3 @@ This assignment is similar to what we introduce to students, and it reflects a r
 ##Note on OMDB:
 
 *The OMDB Api is a nice API to use, however some of the images from the movie results are not hotlinkable outside of localhost. Don't worry about this for now.*
-
-##Areas of Opportunity
-
-* Have state save actual results so don't need to hit API again
-* Clean it down to vanilla JS
-* Bonus: Add trip.js
-* Bonus: Incorporate Netflix / Hulu / Google Play links
