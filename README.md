@@ -6,6 +6,7 @@
 * SPA (Single Page App)
 * Incorporated Bootstrap
 * RWD (Responsive Web Design)
+* Pushed to Heroku (http://gp-ga-spa.herokuapp.com/)
 
 ##Overview
 
@@ -34,8 +35,9 @@ This assignment is similar to what we introduce to students, and it reflects a r
 
 ##To Do
 
-* Push up to Heroku
 * Slim?
 * pushState -- i.e. can send /?q=top%20gun and it would show results for Top Gun
+* Incorporate Handlebars
+* Clean it down to vanilla JS
 * Bonus: Add trip.js
 * Bonus: Incorporate Netflix / Hulu / Google Play links
