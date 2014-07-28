@@ -7,6 +7,7 @@
 * Incorporated Bootstrap
 * RWD (Responsive Web Design)
 * Pushed to Heroku (http://gp-ga-spa.herokuapp.com/)
+* Query string parameters (/?q=planet   will return Rise of the Planet of the Apes)
 
 ##Overview
 

@@ -15,12 +15,6 @@ $(document).keypress(function(e) {
   }
 });
 
-$(function() {
-	if (history.state.query != undefined) {
-		searchForMovie(history.state.query);
-	}
-});
-
 function searchForMovie(query) {
 	$('#search-box').focus();
 	var btn = $('#search-btn')
