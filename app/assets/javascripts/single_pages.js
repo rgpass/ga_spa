@@ -1,21 +1,31 @@
-$(document)
-	.ready(function() {
-		$('#search-btn').click(function() {
-			searchForMovie();
-		});
-	})
-	.keypress(function(e) {
-    if(e.which == 13) {
-      searchForMovie();
-    }
-	})
-;
+$(document).ready(function() {
+	$('#search-btn').click(function() {
+		searchForMovie($('#search-box').val());
+	});
 
-function searchForMovie() {
+	var queryParam = getParameterByName("q");
+	if (queryParam != null) {
+		searchForMovie(queryParam);
+	}
+});
+
+$(document).keypress(function(e) {
+  if(e.which == 13) {
+    searchForMovie($('#search-box').val());
+  }
+});
+
+$(function() {
+	if (history.state.query != undefined) {
+		searchForMovie(history.state.query);
+	}
+});
+
+function searchForMovie(query) {
 	$('#search-box').focus();
 	var btn = $('#search-btn')
 	btn.button('loading');
-	$.get("http://www.omdbapi.com/?t=" + $('#search-box').val()).done(function(data) {
+	$.get("http://www.omdbapi.com/?t=" + query).done(function(data) {
     setTimeout(function() {
     	btn.button('reset')
     }, 500);
@@ -29,6 +39,7 @@ function searchForMovie() {
 			$('#error-alert').show();
 		}
 	})
+	history.pushState(null, "", "?q="+query)
 }
 
 function loadResults(parsed) {
@@ -55,4 +66,9 @@ function setErrorMessage(message) {
 		message = "Forgetting something? :)"
 	}
 	$('#error-message').text(message);
+}
+
+function getParameterByName(name) {
+  var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
