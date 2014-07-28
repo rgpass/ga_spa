@@ -48,9 +48,9 @@
 								<tr>
 									<td>Ratings:</td>
 									<td>
-										<img id="metacritic-mini-logo" src="http://www.gameinformer.com/cfs-filesystemfile.ashx/__key/CommunityServer-Components-ImageFileViewer/CommunityServer-Components-UserFiles-00-00-58-31-12-Attached+Files/4011.BigLogo_5F00_jpg.png_2D00_610x0.png"> : <span id="mc-rating"></span> 
+										<%= link_to image_tag("metacritic-logo.png", id: "metacritic-mini-logo"), "http://www.metacritic.com/" %> : <span id="mc-rating"></span> 
 										<span class="bar">|</span>
-										<img id="imdb-mini-logo" src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/35/IMDb_logo.svg/300px-IMDb_logo.svg.png"> : <span id="imdbRating"></span> out of <span id="imdbVotes"></span> votes
+										<%= link_to image_tag("imdb-logo.png", id: "imdb-mini-logo"), "http://www.imdb.com/" %> : <span id="imdbRating"></span> out of <span id="imdbVotes"></span> votes
 									</td>
 								</tr>
 								<tr>

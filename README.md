@@ -37,7 +37,6 @@ This assignment is similar to what we introduce to students, and it reflects a r
 
 ##To Do
 
-* Download logo (metacritic and imdb)
 * Slim
 * Have state save actual results so don't need to hit API again
 * Incorporate Handlebars
