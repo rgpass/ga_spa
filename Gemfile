@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'font-awesome-sass'
+gem 'slim'
 
 group :doc do
   gem 'sdoc', require: false
