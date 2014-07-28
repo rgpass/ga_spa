@@ -1,29 +1,48 @@
 $(document).ready(function() {
-	$('#search-btn').click(function() {
-		searchForMovie($('#search-box').val());
-	});
-
 	var queryParam = getParameterByName("q");
 	if (queryParam != null) {
 		searchForMovie(queryParam);
+		var queryObj = { query: queryParam }
+		history.replaceState(queryObj, "", "?q="+queryParam)
 	}
+	
+	$('#search-btn').click(function() {
+		var query = $('#search-box').val();
+		searchAndPushState(query);
+	});
+
+
+	window.addEventListener("popstate", function(e) {
+		var state = e.state;
+		if (state.query == undefined) {
+		} else {
+			searchForMovie(state.query);
+			$('#search-box').val(state.query);
+		}
+	});
 });
 
 $(document).keypress(function(e) {
   if(e.which == 13) {
-    searchForMovie($('#search-box').val());
+		var query = $('#search-box').val();
+		searchAndPushState(query);
   }
 });
 
+
+function searchAndPushState(query) {
+	searchForMovie(query);
+	var queryObj = { query: query }
+	history.pushState(queryObj, "", "?q="+query)
+}
+
 function searchForMovie(query) {
+  $('#results, #error-alert').hide();
 	$('#search-box').focus();
 	var btn = $('#search-btn')
 	btn.button('loading');
 	$.get("http://www.omdbapi.com/?t=" + query).done(function(data) {
-    setTimeout(function() {
-    	btn.button('reset')
-    }, 500);
-    $('#results, #error-alert').hide();
+    btn.button('reset')
 		window.parsed = JSON.parse(data);
 		if (parsed.Response == "True") {
 			loadResults(parsed);
@@ -33,7 +52,6 @@ function searchForMovie(query) {
 			$('#error-alert').show();
 		}
 	})
-	history.pushState(null, "", "?q="+query)
 }
 
 function loadResults(parsed) {

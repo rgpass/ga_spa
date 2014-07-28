@@ -8,6 +8,7 @@
 * RWD (Responsive Web Design)
 * Pushed to Heroku (http://gp-ga-spa.herokuapp.com/)
 * Query string parameters (/?q=planet   will return Rise of the Planet of the Apes)
+* Push state (search for "planet" then "top gun" then click back -- will hit server again for "planet")
 
 ##Overview
 
@@ -36,8 +37,9 @@ This assignment is similar to what we introduce to students, and it reflects a r
 
 ##To Do
 
-* Slim?
-* pushState -- i.e. can send /?q=top%20gun and it would show results for Top Gun
+* Download logo (metacritic and imdb)
+* Slim
+* Have state save actual results so don't need to hit API again
 * Incorporate Handlebars
 * Clean it down to vanilla JS
 * Bonus: Add trip.js
