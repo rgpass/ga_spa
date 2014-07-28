@@ -30,6 +30,7 @@ $(document).keypress(function(e) {
 });
 
 
+
 function searchAndPushState(query) {
 	searchForMovie(query);
 	var queryObj = { query: query }
@@ -37,7 +38,7 @@ function searchAndPushState(query) {
 }
 
 function searchForMovie(query) {
-  $('#results, #error-alert').hide();
+  $('.results, #error-alert').hide();
 	$('#search-box').focus();
 	var btn = $('#search-btn')
 	btn.button('loading');
@@ -46,7 +47,7 @@ function searchForMovie(query) {
 		window.parsed = JSON.parse(data);
 		if (parsed.Response == "True") {
 			loadResults(parsed);
-			$('#results').show();
+			$('.results').show();
 		} else {
 			setErrorMessage(parsed.Error);
 			$('#error-alert').show();
@@ -55,21 +56,14 @@ function searchForMovie(query) {
 }
 
 function loadResults(parsed) {
-	$('#title-year-rating').text(parsed.Title + " (" + parsed.Year + ") [" + parsed.Rated + "]");
-	$('.poster').attr('src', parsed.Poster);
-	$('.imdbID').attr('href', "http://www.imdb.com/title/" + parsed.imdbID);
-	$('#plot').text(parsed.Plot);
-	$('#awards').text(parsed.Awards);
-	$('#mc-rating').text(parsed.Metascore);
-	$('#imdbRating').text(parsed.imdbRating);
-	$('#imdbVotes').text(parsed.imdbVotes);
-	$('#genre').text(parsed.Genre);
-	$('#runtime').text(parsed.Runtime);
-	$('#language').text(parsed.Language);
-	$('#country').text(parsed.Country);
-	$('#actors').text(parsed.Actors);
-	$('#director').text(parsed.Director);
-	$('#writer').text(parsed.Writer);
+	window.theSource = $("#hb-results").html();  
+	window.theTemplate = Handlebars.compile(theSource);  
+	window.theData = parsed;
+	 $(document.body).append(theTemplate(theData));
+	if ($('.results').length == 2) {
+		$('.results:first').remove();
+		$('.results').show();
+	}
 }
 
 function setErrorMessage(message) {

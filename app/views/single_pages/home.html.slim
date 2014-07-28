@@ -14,55 +14,57 @@
 				.col-xs-2
 					button#search-btn.btn.btn-primary data-loading-text='Searching <i class="fa fa-spinner fa-spin"></i>' type="button" Search
 
-#results.row.display-none
-	.col-md-3.hidden-sm.hidden-xs.text-center
-		img.poster.large
-		br/
-		p.small.inline-block
-			a.imdbID View on imdb
-	.col-md-9
-		.panel.panel-primary
-			.panel-heading
-				h3#title-year-rating.panel-title.strong
-				a.imdbID.visible-sm.visible-xs.title-link View on imdb
-			.panel-body
-				.row
-					.hidden-xs.col-sm-4.hidden-md.hidden-lg.text-center
-						img.poster.small
-					.col-xs-12.col-sm-8.col-md-12.col-lg-12
-						p#plot
-						table.table.no-margin.table-margin
-							tbody
-								tr
-									td Awards:
-									td#awards
-								tr
-									td Ratings:
-									td
-										| #{link_to image_tag("metacritic-logo.png", id: "metacritic-mini-logo"), "http://www.metacritic.com/"} : 
-										span#mc-rating
-										span.bar |
-										| #{link_to image_tag("imdb-logo.png", id: "imdb-mini-logo"), "http://www.imdb.com/"} : 
-										span#imdbRating
-										|  out of 
-										span#imdbVotes
-										| votes
-								tr
-									td Breakdown:
-									td
-										span#genre
-										span.bar |
-										span#runtime
-										span.bar |
-										span#language
-										span.bar |
-										span#country
-								tr
-									td Featuring:
-									td#actors
-								tr
-									td Director(s):
-									td#director
-								tr
-									td Writer(s):
-									td#writer
+script#hb-results type="text/x-handlebars-template"
+	.results.row.display-none
+		.col-md-3.hidden-sm.hidden-xs.text-center
+			img.large src="{{Poster}}"
+			br/
+			p.small.inline-block
+				a href="http://www.imdb.com/title/{{imdbID}}" View on imdb
+		.col-md-9
+			.panel.panel-primary
+				.panel-heading
+					h3.panel-title.strong
+						| {{Title}} ({{Year}}) [{{Rated}}]
+					a.visible-sm.visible-xs.title-link href="http://www.imdb.com/title/{{imdbID}}" View on imdb
+				.panel-body
+					.row
+						.hidden-xs.col-sm-4.hidden-md.hidden-lg.text-center
+							img.small src="{{Poster}}"
+						.col-xs-12.col-sm-8.col-md-12.col-lg-12
+							p
+								| {{Plot}}
+							table.table.no-margin.table-margin
+								tbody
+									tr
+										td Awards:
+										td
+											| {{Awards}}
+									tr
+										td Ratings:
+										td
+											| #{link_to image_tag("metacritic-logo.png", id: "metacritic-mini-logo"), "http://www.metacritic.com/"} : {{Metascore}}
+											span.bar |
+											| #{link_to image_tag("imdb-logo.png", id: "imdb-mini-logo"), "http://www.imdb.com/"} : {{imdbRating}} out of {{imdbVotes}} votes
+									tr
+										td Breakdown:
+										td
+											| {{Genre}}
+											span.bar |
+											| {{Runtime}}
+											span.bar |
+											| {{Language}}
+											span.bar |
+											| {{Country}}
+									tr
+										td Featuring:
+										td
+											| {{Actors}}
+									tr
+										td Director(s):
+										td
+											| {{Director}}
+									tr
+										td Writer(s):
+										td
+											| {{Writer}}
